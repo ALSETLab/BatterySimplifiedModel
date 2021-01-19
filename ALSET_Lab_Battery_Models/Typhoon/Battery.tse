@@ -1,0 +1,1302 @@
+version = 4.2
+
+
+//
+// Saved by sw version: 2018.1 SP1
+// Save timestamp: 22-Jul-2019 @ 03:39:23 PM
+//
+
+model "Battery_Charge_2" {
+    configuration {
+        hil_device = "HIL603"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = auto
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = True
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+    }
+
+    
+    component Subsystem Root {
+
+        
+        component src_scada_input SOC0 {
+            
+            execution_rate = "50e-6"
+            unit = ""
+	    
+        }
+        [
+            position = 8248, 8256
+
+        ]
+        
+        component src_scada_input Rated_Capacity {
+            
+            execution_rate = "50e-6"
+            unit = ""
+	    
+        }
+        [
+            position = 8312, 8304
+
+        ]
+        
+        component src_scada_input Nominal_Voltage {
+            
+            execution_rate = "50e-6"
+            unit = ""
+	    
+        }
+        [
+            position = 8304, 8400
+
+        ]
+        
+        component pas_resistor R1 {
+            
+            resistance = "0.025"
+	    
+        }
+        [
+            position = 9064, 8344
+
+        ]
+        
+        component gen_probe SOC {
+            
+	    
+        }
+        [
+            position = 8768, 8232
+
+        ]
+        
+        component pas_resistor R2 {
+            
+            resistance = "0.05"
+	    
+        }
+        [
+            position = 9136, 8440
+            rotation = right
+
+        ]
+        
+        component pas_capacitor C1 {
+            
+            capacitance = "100e-6"
+	    
+        }
+        [
+            position = 9208, 8440
+            rotation = right
+
+        ]
+        
+        component Subsystem Battery {
+            layout = dynamic
+
+            
+            component src_constant Constant1 {
+                
+                execution_rate = "50e-6"
+    	    
+            }
+            [
+                position = 8096, 8088
+
+            ]
+            
+            component gen_product Product1 {
+                
+                signs = "*/"
+    	    
+            }
+            [
+                position = 8144, 8160
+
+            ]
+            
+            component gen_sum Sub1 {
+                
+                signs = "+-"
+    	    
+            }
+            [
+                position = 8272, 8096
+
+            ]
+            
+            component src_constant Constant2 {
+                
+                execution_rate = "50e-6"
+                value = "100"
+    	    
+            }
+            [
+                position = 8064, 8192
+
+            ]
+            
+            component gen_integrator Integrator1 {
+                
+                show_init_condition = "external"
+    	    
+            }
+            [
+                position = 8712, 8104
+
+            ]
+            
+            component gen_product Product2 {
+                
+    	    
+            }
+            [
+                position = 8416, 8104
+
+            ]
+            
+            component gen_product Product3 {
+                
+    	    
+            }
+            [
+                position = 8560, 8112
+
+            ]
+            
+            component src_constant Constant3 {
+                
+                execution_rate = "50e-6"
+                value = "3600"
+    	    
+            }
+            [
+                position = 8456, 8208
+
+            ]
+            
+            component gen_gain Gain1 {
+                
+                execution_rate = "50e-6"
+                gain = "1/3600"
+    	    
+            }
+            [
+                position = 8816, 8104
+
+            ]
+            
+            component gen_limiter Limit1 {
+                
+                execution_rate = "50e-6"
+                lower_limit = "0"
+                upper_limit = "9.999"
+    	    
+            }
+            [
+                position = 8896, 8104
+
+            ]
+            
+            component gen_product Product4 {
+                
+                execution_rate = "50e-6"
+                signs = "*/"
+    	    
+            }
+            [
+                position = 8984, 8112
+
+            ]
+            
+            component gen_sum Sub2 {
+                
+                signs = "+-"
+    	    
+            }
+            [
+                position = 9104, 8104
+
+            ]
+            
+            component src_constant Constant4 {
+                
+                execution_rate = "50e-6"
+    	    
+            }
+            [
+                position = 9000, 8032
+
+            ]
+            
+            component gen_product Product5 {
+                
+    	    
+            }
+            [
+                position = 9208, 8096
+
+            ]
+            
+            component src_constant Constant5 {
+                
+                execution_rate = "50e-6"
+                value = "100"
+    	    
+            }
+            [
+                position = 9112, 8016
+
+            ]
+            
+            component gen_limiter Limit2 {
+                
+                lower_limit = "0"
+                upper_limit = "100"
+    	    
+            }
+            [
+                position = 9304, 8096
+
+            ]
+            
+            component gen_z_domain_transfer "Current filiter" {
+                
+                a_coeff = "[1, -0.999500125]"
+                b_coeff = "[1-0.999500125]"
+                execution_rate = "50e-6"
+    	    
+            }
+            [
+                position = 8080, 8464
+
+            ]
+            
+            component src_constant Rs_value {
+                
+                execution_rate = "50e-6"
+                value = "0.005"
+    	    
+            }
+            [
+                position = 8456, 8416
+
+            ]
+            
+            component gen_product Vs {
+                
+    	    
+            }
+            [
+                position = 8656, 8456
+
+            ]
+            
+            component gen_product Product6 {
+                
+                signs = "*/"
+    	    
+            }
+            [
+                position = 8712, 8352
+
+            ]
+            
+            component src_constant Constant6 {
+                
+                execution_rate = "50e-6"
+                value = "100"
+    	    
+            }
+            [
+                position = 8552, 8360
+
+            ]
+            
+            component gen_sum Sub3 {
+                
+                signs = "+-"
+    	    
+            }
+            [
+                position = 9088, 8400
+
+            ]
+            
+            component gen_limiter Limit3 {
+                
+                lower_limit = "0"
+                upper_limit = "10"
+    	    
+            }
+            [
+                position = 9208, 8400
+
+            ]
+            
+            component gen_product Product7 {
+                
+                signs = "*/"
+    	    
+            }
+            [
+                position = 9328, 8408
+
+            ]
+            
+            component src_constant Constant7 {
+                
+                execution_rate = "50e-6"
+                value = "3.25"
+    	    
+            }
+            [
+                position = 9208, 8472
+
+            ]
+            
+            component gen_product Product8 {
+                
+    	    
+            }
+            [
+                position = 9464, 8416
+
+            ]
+            
+            component Subsystem VOC_calculation {
+                layout = dynamic
+
+                
+                component src_constant Constant7 {
+                    
+                    execution_rate = "50e-6"
+                    value = "-1.031"
+        	    
+                }
+                [
+                    position = 8224, 8144
+
+                ]
+                
+                component gen_product Product7 {
+                    
+        	    
+                }
+                [
+                    position = 8384, 8152
+
+                ]
+                
+                component gen_math_fnc "Mathematical function1" {
+                    
+        	    
+                }
+                [
+                    position = 8264, 8232
+
+                ]
+                
+                component gen_product Product8 {
+                    
+        	    
+                }
+                [
+                    position = 8136, 8232
+
+                ]
+                
+                component src_constant Constant8 {
+                    
+                    execution_rate = "50e-6"
+                    value = "-35"
+        	    
+                }
+                [
+                    position = 8032, 8224
+
+                ]
+                
+                component gen_sum Sum1 {
+                    
+                    signs = "+++-+"
+        	    
+                }
+                [
+                    position = 8760, 8184
+
+                ]
+                
+                component src_constant Constant9 {
+                    
+                    execution_rate = "50e-6"
+                    value = "3.6"
+        	    
+                }
+                [
+                    position = 8480, 8168
+
+                ]
+                
+                component gen_product Product9 {
+                    
+        	    
+                }
+                [
+                    position = 8272, 8400
+
+                ]
+                
+                component src_constant Constant10 {
+                    
+                    execution_rate = "50e-6"
+                    value = "0.2156"
+        	    
+                }
+                [
+                    position = 8168, 8432
+
+                ]
+                
+                component gen_math_fnc "Mathematical function2" {
+                    
+                    mathematical_fn = "power"
+        	    
+                }
+                [
+                    position = 8280, 8528
+
+                ]
+                
+                component src_constant Constant11 {
+                    
+                    execution_rate = "50e-6"
+                    value = "2"
+        	    
+                }
+                [
+                    position = 8144, 8560
+
+                ]
+                
+                component gen_product Product10 {
+                    
+        	    
+                }
+                [
+                    position = 8480, 8520
+
+                ]
+                
+                component src_constant Constant12 {
+                    
+                    execution_rate = "50e-6"
+                    value = "0.1178"
+        	    
+                }
+                [
+                    position = 8376, 8480
+
+                ]
+                
+                component gen_product Product11 {
+                    
+        	    
+                }
+                [
+                    position = 8480, 8656
+
+                ]
+                
+                component src_constant Constant13 {
+                    
+                    execution_rate = "50e-6"
+                    value = "3"
+        	    
+                }
+                [
+                    position = 8144, 8696
+
+                ]
+                
+                component gen_math_fnc "Mathematical function3" {
+                    
+                    mathematical_fn = "power"
+        	    
+                }
+                [
+                    position = 8288, 8664
+
+                ]
+                
+                component src_constant Constant14 {
+                    
+                    execution_rate = "50e-6"
+                    value = "0.3201"
+        	    
+                }
+                [
+                    position = 8384, 8616
+
+                ]
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                port SOCn {
+                    
+                    position = left:1
+                    kind = sp
+                    direction = out
+                    sp_type {
+                        default = auto
+                        readonly = True
+                    }
+                }
+                [
+                    position = 7864, 8288
+
+                ]
+                
+                port Voc {
+                    
+                    position = right:1
+                    kind = sp
+                    direction = in
+                    sp_type {
+                        default = inherit
+                        readonly = True
+                    }
+                }
+                [
+                    position = 8920, 8184
+
+                ]
+                
+                junction Junction1 sp
+                [
+                    position = 8096, 8288
+
+                ]
+                
+                junction Junction2 sp
+                [
+                    position = 8096, 8392
+
+                ]
+                
+                junction Junction3 sp
+                [
+                    position = 8096, 8520
+
+                ]
+                connect Constant10.out Product9.in1 as Connection45
+                
+                connect Constant11.out "Mathematical function2.in1" as Connection50
+                [
+                            breakpoints =8160, 8560;8176, 8560
+
+                ]
+                connect Constant12.out Product10.in as Connection52
+                
+                connect Constant13.out "Mathematical function3.in1" as Connection56
+                [
+                            breakpoints =8160, 8696;8176, 8696
+
+                ]
+                connect Constant14.out Product11.in as Connection55
+                
+                connect Constant9.out Sum1.in1 as Connection41
+                [
+                            breakpoints =8512, 8168;8720, 8168
+
+                ]
+                connect Junction1 Product8.in1 as Connection43
+                
+                connect Junction2 Junction1 as Connection48
+                
+                connect Junction3 Junction2 as Connection59
+                
+                connect "Mathematical function1.in" Product8.out as Connection38
+                
+                connect "Mathematical function2.in" Junction3 as Connection58
+                
+                connect "Mathematical function3.in" Junction3 as Connection60
+                
+                connect Product10.in1 "Mathematical function2.out" as Connection51
+                
+                connect Product10.out Sum1.in3 as Connection53
+                [
+                            breakpoints =8576, 8520;8576, 8200
+
+                ]
+                connect Product11.in1 "Mathematical function3.out" as Connection57
+                
+                connect Product11.out Sum1.in4 as Connection61
+                
+                connect Product7.in Constant7.out as Connection35
+                
+                connect Product7.in1 "Mathematical function1.out" as Connection39
+                
+                connect Product7.out Sum1.in as Connection40
+                
+                connect Product8.in Constant8.out as Connection36
+                
+                connect Product9.in Junction2 as Connection47
+                
+                connect Product9.out Sum1.in2 as Connection46
+                [
+                            breakpoints =8528, 8400;8528, 8184
+
+                ]
+                connect SOCn Junction1 as Connection42
+                
+                connect Voc Sum1.out as Connection54
+                
+                
+
+                
+            }
+            [
+                position = 8880, 8352
+                size = 136, 48
+
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port SOC0 {
+                
+                position = auto:auto
+                kind = sp
+                direction = out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7848, 8152
+
+            ]
+            
+            port capacity {
+                
+                position = auto:auto
+                kind = sp
+                direction = out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7848, 8272
+
+            ]
+            
+            port SOC {
+                
+                position = right:1
+                kind = sp
+                direction = in
+                sp_type {
+                    default = inherit
+                    readonly = True
+                }
+            }
+            [
+                position = 9424, 8096
+
+            ]
+            
+            port current {
+                
+                position = auto:auto
+                kind = sp
+                direction = out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7856, 8048
+
+            ]
+            
+            port Nominal_V {
+                
+                position = auto:auto
+                kind = sp
+                direction = out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 9304, 8544
+
+            ]
+            
+            port Vt {
+                
+                position = right:1
+                kind = sp
+                direction = in
+                sp_type {
+                    default = inherit
+                    readonly = True
+                }
+            }
+            [
+                position = 9600, 8416
+
+            ]
+            
+            comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head><body style=" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">The upper limit of &quot;Limit1&quot; = capacity*0.9999.</p></body></html> ENDCOMMENT 
+            [
+                position = 8616, 8008
+
+            ]
+            
+            junction Junction1 sp
+            [
+                position = 8376, 8272
+
+            ]
+            
+            junction Junction2 sp
+            [
+                position = 8000, 8048
+
+            ]
+            
+            junction Junction3 sp
+            [
+                position = 9384, 8096
+
+            ]
+            connect Constant1.out Sub1.in as Connection1
+            
+            connect Constant2.out Product1.in1 as Connection3
+            
+            connect Constant3.out Product3.in1 as Connection11
+            
+            connect Constant4.out Sub2.in as Connection20
+            
+            connect Constant5.out Product5.in as Connection22
+            
+            connect Constant6.out Product6.in1 as Connection31
+            
+            connect Constant7.out Product7.in1 as Connection40
+            
+            connect "Current filiter.in" Junction2 as Connection28
+            
+            connect Gain1.in Integrator1.out as Connection13
+            
+            connect Integrator1.init_condition_port Product3.out as Connection12
+            
+            connect Junction1 Product2.in1 as Connection17
+            
+            connect Junction2 Integrator1.in as Connection27
+            [
+                        breakpoints =8672, 8048
+
+            ]
+            connect Junction3 SOC as Connection33
+            
+            connect Limit1.in Gain1.out as Connection14
+            
+            connect Limit1.out Product4.in as Connection15
+            
+            connect Limit2.out Junction3 as Connection32
+            
+            connect Limit2.in Product5.out as Connection23
+            
+            connect Limit3.in Sub3.out as Connection38
+            
+            connect Nominal_V Product8.in1 as Connection42
+            
+            connect Product3.in Product2.out as Connection10
+            
+            connect Product4.in1 Junction1 as Connection18
+            
+            connect Product6.in Junction3 as Connection34
+            [
+                        breakpoints =8616, 8344;8616, 8296;9384, 8296
+
+            ]
+            connect Product7.in Limit3.out as Connection39
+            
+            connect Product8.in Product7.out as Connection41
+            
+            connect Rs_value.out Vs.in as Connection30
+            
+            connect SOC0 Product1.in as Connection8
+            
+            connect Sub1.in1 Product1.out as Connection4
+            
+            connect Sub1.out Product2.in as Connection5
+            
+            connect Sub2.in1 Product4.out as Connection19
+            
+            connect Sub2.out Product5.in1 as Connection21
+            
+            connect Sub3.in VOC_calculation.Voc as Connection36
+            
+            connect Sub3.in1 Vs.out as Connection37
+            
+            connect VOC_calculation.SOCn Product6.out as Connection35
+            
+            connect Vs.in1 "Current filiter.out" as Connection29
+            
+            connect Vt Product8.out as Connection43
+            
+            connect capacity Junction1 as Connection16
+            
+            connect current Junction2 as Connection26
+            [
+                        breakpoints =7888, 8048
+
+            ]
+            
+
+            
+            /*
+                Masks
+            */
+            mask {
+                description = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:\'Consolas\'; font-size:10pt; font-weight:400; font-style:normal;\"><p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"
+                
+        	
+            CODE component_open
+                from typhoon.apps.schematic_editor.dialogs.component_property_dialogs.general import RegularComponentPropertiesDialog
+            
+                dialog = RegularComponentPropertiesDialog(
+                    component=component,
+                    property_container=component.masks[-1],
+                    current_diagram=current_diagram
+                )
+                dialog.exec_()
+                
+            ENDCODE
+            }
+        }
+        [
+            position = 8528, 8328
+            size = 216, 200
+
+        ]
+        component "core/Signal Controlled Voltage Source" Vsp1 {
+            
+        }
+        [
+            position = 8864, 8424
+            rotation = right
+            size = 64, 32
+
+        ]
+        
+        component "core/Current Measurement" Ia2 {
+            
+            execution_rate = "50e-6"
+            sig_output = "True"
+        }
+        [
+            position = 8920, 8344
+            size = 64, 32
+
+        ]
+        
+        component "core/Voltage Measurement" Va1 {
+            
+        }
+        [
+            position = 8792, 8432
+            rotation = right
+            size = 64, 32
+
+        ]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        junction Junction1 pe
+        [
+            position = 9136, 8384
+
+        ]
+        
+        junction Junction2 pe
+        [
+            position = 8864, 8488
+
+        ]
+        
+        junction Junction3 pe
+        [
+            position = 9168, 8488
+
+        ]
+        connect C1.p_node Junction1 as Connection42
+        
+        connect C1.n_node Junction3 as Connection46
+        
+        connect Ia2.out Battery.current as Connection27
+        [
+                    breakpoints =8712, 8320;8712, 8432;8712, 8552;8400, 8552
+
+        ]
+        connect Ia2.p_node Vsp1.p_node as Connection24
+        
+        connect Junction1 R2.p_node as Connection41
+        
+        connect Junction2 Va1.n_node as Connection44
+        [
+                    breakpoints =8864, 8488;8864, 8528;8792, 8528
+
+        ]
+        connect Junction3 Junction2 as Connection47
+        [
+                    breakpoints =9168, 8528;8864, 8528
+
+        ]
+        connect Nominal_Voltage.out Battery.Nominal_V as Connection3
+        
+        connect R1.p_node Ia2.n_node as Connection6
+        [
+                    breakpoints =8960, 8344
+
+        ]
+        connect R1.n_node Junction1 as Connection40
+        [
+                    breakpoints =9168, 8344;9168, 8384
+
+        ]
+        connect R2.n_node Junction3 as Connection48
+        
+        connect Rated_Capacity.out Battery.capacity as Connection2
+        
+        connect SOC.in Battery.SOC as Connection28
+        
+        connect SOC0.out Battery.SOC0 as Connection1
+        
+        connect Va1.p_node Vsp1.p_node as Connection29
+        
+        connect Vsp1.in Battery.Vt as Connection26
+        
+        connect Vsp1.n_node Junction2 as Connection43
+        [
+                    breakpoints =8864, 8472
+
+        ]
+        
+
+        
+    }
+
+    
+    
+    default {
+        
+        gen_gain {
+            gain = "1"
+            multiplication = "Element-wise(K.*u)"
+            execution_rate = "inherit"
+        }
+        
+        gen_integrator {
+            show_reset = "none"
+            show_init_condition = "internal"
+            init_value = "0"
+            limit_output = "False"
+            limit_upper = "inf"
+            limit_lower = "-inf"
+            show_state = "False"
+            state_port_type = "inherit"
+            execution_rate = "inherit"
+        }
+        
+        gen_limiter {
+            upper_limit = "[\'inf\']"
+            lower_limit = "[\'-inf\']"
+            execution_rate = "inherit"
+        }
+        
+        gen_math_fnc {
+            mathematical_fn = "exponential"
+            execution_rate = "inherit"
+        }
+        
+        gen_probe {
+            addr = "0"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "generic"
+            execution_rate = "inherit"
+        }
+        
+        gen_product {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+        
+        gen_sum {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+        
+        gen_z_domain_transfer {
+            domain = "Z-domain"
+            method = "Zero-order hold"
+            b_coeff = "[1]"
+            a_coeff = "[1,-1]"
+            init_states = "0"
+            signal_out_type = "inherit"
+            execution_rate = "inherit"
+        }
+        
+        pas_capacitor {
+            capacitance = "1e-6"
+            initial_voltage = "0"
+            pole_shift_ignore = "False"
+            visible = "True"
+        }
+        
+        pas_resistor {
+            resistance = "1"
+        }
+        
+        src_constant {
+            value = "1"
+            signal_type = "real"
+            execution_rate = "100e-6"
+        }
+        
+        src_scada_input {
+            addr = "0"
+            format = "real"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "real"
+            min = "-1e6"
+            max = "1e6"
+            def_value = "0"
+            unit = " "
+            execution_rate = "100e-6"
+        }
+        
+        "core/Current Measurement" {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        "core/Voltage Measurement" {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        "core/Signal Controlled Voltage Source" {
+            execution_rate = "inherit"
+        }
+    }
+
+}

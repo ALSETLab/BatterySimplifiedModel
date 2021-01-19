@@ -1,0 +1,2366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<net_list>
+    
+   <system_description>
+        <name>00138266a41d11e98941ae92c9662a88</name>
+        <sw_version>2018.1 SP1</sw_version>
+
+        <hw_settings>
+            <hardware_product_id>HIL603</hardware_product_id>
+            <hardware_revision>3</hardware_revision>
+            <hardware_configuration_id>1</hardware_configuration_id>
+            <hil_device_id>None</hil_device_id>
+            <device_ao_limit_enable>True</device_ao_limit_enable>
+        </hw_settings>
+
+        <solver_settings>
+            <sim_time_step>auto</sim_time_step>
+            <sim_discr_scale>1.0</sim_discr_scale>
+            <sim_method>exact</sim_method>
+            <enb_gds_oversampling>True</enb_gds_oversampling>
+            <show_modes>False</show_modes>
+            <cpl_stb>False</cpl_stb>
+            <enb_dep_sw_detect>False</enb_dep_sw_detect>
+            <enb_pole_shift>True</enb_pole_shift>
+            <ss_calc_method>systematic elimination</ss_calc_method>
+        </solver_settings>
+
+        <system_sp_settings>
+            <sys_sp_rate_1>0.0001</sys_sp_rate_1>
+            <sys_sp_rate_2>0.05</sys_sp_rate_2>
+        </system_sp_settings>
+
+        <user_sp_settings>
+            <code_section>internal memory</code_section>
+            <data_section>internal memory</data_section>
+        </user_sp_settings>
+    </system_description>
+
+    
+    
+    <spc0><electric_node_list>
+        
+             <node>0</node>
+        
+             <node>1</node>
+        
+             <node>2</node>
+        
+             <node>3</node>
+        
+        </electric_node_list>
+
+        <dsp_node_list>
+        <node>0</node>
+        <node>1</node>
+        </dsp_node_list>
+
+
+        <element_list>
+            
+  
+  <component>
+      <type>el_current_msr</type>
+      <name>Ia2.Ia1</name>
+      <parent_type>Current Measurement</parent_type>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>visible</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>feed_forward</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>nd_msr_estimation</name>
+            <value>true</value>
+        </parameter>
+        <parameter>
+            <name>comparator_enable</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>operator</name>
+            <value>greater</value>
+        </parameter>
+        <parameter>
+            <name>threshold</name>
+            <value>0.0</value>
+        </parameter>
+        <parameter>
+            <name>cmp_abs_value</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>sig_output</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>type</name>
+            <value>regular measurement</value>
+        </parameter>
+        <parameter>
+            <name>param_set</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>override_signal_name</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>signal_name</name>
+            <value>Ia2</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>p_node</name>
+        <type>pe</type>
+        <node>1</node>
+    </terminal>
+    <terminal>
+        <name>n_node</name>
+        <type>pe</type>
+        <node>2</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>1</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>pas_capacitor</type>
+      <name>C1</name>
+
+      
+    <parameters>
+        <parameter>
+            <name>capacitance</name>
+            <value>0.0001</value>
+        </parameter>
+        <parameter>
+            <name>initial_voltage</name>
+            <value>0.0</value>
+        </parameter>
+        <parameter>
+            <name>pole_shift_ignore</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>visible</name>
+            <value>True</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>p_node</name>
+        <type>pe</type>
+        <node>0</node>
+    </terminal>
+    <terminal>
+        <name>n_node</name>
+        <type>pe</type>
+        <node>3</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_voltage</type>
+      <name>Vsp1.Vs1</name>
+      <parent_type>Signal Controlled Voltage Source</parent_type>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>sig_input</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>type</name>
+            <value>signal controlled</value>
+        </parameter>
+        <parameter>
+            <name>param_set</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>parent_label</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>spc_nb</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+        <parameter>
+            <name>cpd_visible</name>
+            <value>True</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>p_node</name>
+        <type>pe</type>
+        <node>1</node>
+    </terminal>
+    <terminal>
+        <name>n_node</name>
+        <type>pe</type>
+        <node>3</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>0</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>pas_resistor</type>
+      <name>R1</name>
+
+      
+    <parameters>
+        <parameter>
+            <name>resistance</name>
+            <value>0.025</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>p_node</name>
+        <type>pe</type>
+        <node>2</node>
+    </terminal>
+    <terminal>
+        <name>n_node</name>
+        <type>pe</type>
+        <node>0</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>pas_resistor</type>
+      <name>R2</name>
+
+      
+    <parameters>
+        <parameter>
+            <name>resistance</name>
+            <value>0.05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>p_node</name>
+        <type>pe</type>
+        <node>0</node>
+    </terminal>
+    <terminal>
+        <name>n_node</name>
+        <type>pe</type>
+        <node>3</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>el_voltage_msr</type>
+      <name>Va1.Va1</name>
+      <parent_type>Voltage Measurement</parent_type>
+
+      
+    <parameters>
+        <parameter>
+            <name>visible</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>feed_forward</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>nd_msr_estimation</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>comparator_enable</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>operator</name>
+            <value>greater</value>
+        </parameter>
+        <parameter>
+            <name>threshold</name>
+            <value>0.0</value>
+        </parameter>
+        <parameter>
+            <name>cmp_abs_value</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>sig_output</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>0.0001</value>
+        </parameter>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>type</name>
+            <value>regular measurement</value>
+        </parameter>
+        <parameter>
+            <name>param_set</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>override_signal_name</name>
+            <value>True</value>
+        </parameter>
+        <parameter>
+            <name>signal_name</name>
+            <value>Va1</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>p_node</name>
+        <type>pe</type>
+        <node>1</node>
+    </terminal>
+    <terminal>
+        <name>n_node</name>
+        <type>pe</type>
+        <node>3</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+        </element_list>
+
+
+    </spc0>
+    
+    
+    <signal_processing><electric_node_list>
+        
+        </electric_node_list>
+
+        <dsp_node_list>
+        <node>0</node>
+        <node>1</node>
+        <node>2</node>
+        <node>3</node>
+        <node>4</node>
+        <node>5</node>
+        <node>6</node>
+        <node>7</node>
+        <node>8</node>
+        <node>9</node>
+        <node>10</node>
+        <node>11</node>
+        <node>12</node>
+        <node>13</node>
+        <node>14</node>
+        <node>15</node>
+        <node>16</node>
+        <node>17</node>
+        <node>18</node>
+        <node>19</node>
+        <node>20</node>
+        <node>21</node>
+        <node>22</node>
+        <node>23</node>
+        <node>24</node>
+        <node>25</node>
+        <node>26</node>
+        <node>27</node>
+        <node>28</node>
+        <node>29</node>
+        <node>30</node>
+        <node>31</node>
+        <node>32</node>
+        <node>33</node>
+        <node>34</node>
+        <node>35</node>
+        <node>36</node>
+        <node>37</node>
+        <node>38</node>
+        <node>39</node>
+        <node>40</node>
+        <node>41</node>
+        <node>42</node>
+        <node>43</node>
+        <node>44</node>
+        <node>45</node>
+        <node>46</node>
+        </dsp_node_list>
+
+
+        <element_list>
+            
+  
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant7</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[3.25]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>28</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product5</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>7</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>23</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>43</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_scada_input</type>
+      <name>Nominal_Voltage</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>format</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>override_signal_name</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>signal_name</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>min</name>
+            <value>-1000000.0</value>
+        </parameter>
+        <parameter>
+            <name>max</name>
+            <value>1000000.0</value>
+        </parameter>
+        <parameter>
+            <name>def_value</name>
+            <value>0.0</value>
+        </parameter>
+        <parameter>
+            <name>unit</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>16</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_gain</type>
+      <name>Battery.Gain1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>gain</name>
+            <value>[0.0002777777777777778]</value>
+        </parameter>
+        <parameter>
+            <name>multiplication</name>
+            <value>Element-wise(K.*u)</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>40</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>30</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_sum</type>
+      <name>Battery.Sub3</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>+-</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>1</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>26</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>2</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product8</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>15</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>41</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>16</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.VOC_calculation.Product11</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>5</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>29</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>38</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_limiter</type>
+      <name>Battery.Limit3</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>upper_limit</name>
+            <value>[10.0]</value>
+        </parameter>
+        <parameter>
+            <name>lower_limit</name>
+            <value>[0.0]</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>1</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>36</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.VOC_calculation.Product8</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>45</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>22</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>35</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product6</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>*/</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>35</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>42</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>4</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_limiter</type>
+      <name>Battery.Limit2</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>upper_limit</name>
+            <value>[100.0]</value>
+        </parameter>
+        <parameter>
+            <name>lower_limit</name>
+            <value>[0.0]</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>7</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>42</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product3</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>44</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>18</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>19</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant13</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[3.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>31</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_scada_input</type>
+      <name>SOC0</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>format</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>override_signal_name</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>signal_name</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>min</name>
+            <value>-1000000.0</value>
+        </parameter>
+        <parameter>
+            <name>max</name>
+            <value>1000000.0</value>
+        </parameter>
+        <parameter>
+            <name>def_value</name>
+            <value>0.0</value>
+        </parameter>
+        <parameter>
+            <name>unit</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>12</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant5</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[100.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>23</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Rs_value</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[0.005]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>10</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_math_fnc</type>
+      <name>Battery.VOC_calculation.Mathematical function2</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>mathematical_fn</name>
+            <value>power</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>6</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>35</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>9</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant3</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[3600.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>19</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant7</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[-1.031]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>32</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_integrator</type>
+      <name>Battery.Integrator1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>show_reset</name>
+            <value>none</value>
+        </parameter>
+        <parameter>
+            <name>show_init_condition</name>
+            <value>external</value>
+        </parameter>
+        <parameter>
+            <name>init_value</name>
+            <value>[0.0]</value>
+        </parameter>
+        <parameter>
+            <name>limit_output</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>limit_upper</name>
+            <value>[i, n, f]</value>
+        </parameter>
+        <parameter>
+            <name>limit_lower</name>
+            <value>[-, i, n, f]</value>
+        </parameter>
+        <parameter>
+            <name>show_state</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>state_port_type</name>
+            <value>inherit</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>33</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>40</node>
+    </terminal>
+    <terminal>
+        <name>init_condition_port</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>44</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product4</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>*/</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>20</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>14</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>25</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product7</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>*/</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>41</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>36</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>28</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant9</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[3.6]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>17</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant8</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[-35.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>22</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[1.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>13</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant2</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[100.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>0</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_sum</type>
+      <name>Battery.Sub2</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>+-</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>43</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>8</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>20</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.VOC_calculation.Product7</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>3</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>32</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>11</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.VOC_calculation.Product10</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>24</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>39</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>6</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_limiter</type>
+      <name>Battery.Limit1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>upper_limit</name>
+            <value>[9.999]</value>
+        </parameter>
+        <parameter>
+            <name>lower_limit</name>
+            <value>[0.0]</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>30</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>14</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Vs</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>2</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>10</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>27</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.VOC_calculation.Product9</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>21</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>35</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>37</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_math_fnc</type>
+      <name>Battery.VOC_calculation.Mathematical function3</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>mathematical_fn</name>
+            <value>power</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>38</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>35</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>31</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant12</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[0.1178]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>39</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_probe</type>
+      <name>SOC</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>override_signal_name</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>signal_name</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>generic</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>42</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_sum</type>
+      <name>Battery.Sub1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>+-</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>34</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>13</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>46</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_z_domain_transfer</type>
+      <name>Battery.Current filiter</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>domain</name>
+            <value>Z-domain</value>
+        </parameter>
+        <parameter>
+            <name>method</name>
+            <value>Zero-order hold</value>
+        </parameter>
+        <parameter>
+            <name>b_coeff</name>
+            <value>[0.0004998750000000385]</value>
+        </parameter>
+        <parameter>
+            <name>a_coeff</name>
+            <value>[1.0, -0.999500125]</value>
+        </parameter>
+        <parameter>
+            <name>init_states</name>
+            <value>[0.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_out_type</name>
+            <value>inherit</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>33</node>
+    </terminal>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>27</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_sum</type>
+      <name>Battery.VOC_calculation.Sum1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>+++-+</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>26</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>3</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>17</node>
+    </terminal>
+    <terminal>
+        <name>in2</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>21</node>
+    </terminal>
+    <terminal>
+        <name>in3</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>24</node>
+    </terminal>
+    <terminal>
+        <name>in4</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>5</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product2</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>2</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>18</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>34</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>25</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant14</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[0.3201]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>29</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_math_fnc</type>
+      <name>Battery.VOC_calculation.Mathematical function1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>mathematical_fn</name>
+            <value>exponential</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>11</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>45</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant6</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[100.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>4</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>gen_product</type>
+      <name>Battery.Product1</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>signs</name>
+            <value>*/</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>46</node>
+    </terminal>
+    <terminal>
+        <name>in</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>12</node>
+    </terminal>
+    <terminal>
+        <name>in1</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>0</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant11</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[2.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>9</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_scada_input</type>
+      <name>Rated_Capacity</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>addr</name>
+            <value>0</value>
+        </parameter>
+        <parameter>
+            <name>format</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>override_signal_name</name>
+            <value>False</value>
+        </parameter>
+        <parameter>
+            <name>signal_name</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>min</name>
+            <value>-1000000.0</value>
+        </parameter>
+        <parameter>
+            <name>max</name>
+            <value>1000000.0</value>
+        </parameter>
+        <parameter>
+            <name>def_value</name>
+            <value>0.0</value>
+        </parameter>
+        <parameter>
+            <name>unit</name>
+            <value></value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>25</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.VOC_calculation.Constant10</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[0.2156]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>37</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+  <component>
+      <type>src_constant</type>
+      <name>Battery.Constant4</name>
+      <system_cpu_component>False</system_cpu_component>
+
+      
+    <parameters>
+        <parameter>
+            <name>value</name>
+            <value>[1.0]</value>
+        </parameter>
+        <parameter>
+            <name>signal_type</name>
+            <value>real</value>
+        </parameter>
+        <parameter>
+            <name>execution_rate</name>
+            <value>5e-05</value>
+        </parameter>
+    </parameters>
+
+      
+    <terminals>
+    <terminal>
+        <name>out</name>
+        <type>sp</type>
+        <signal_type>real</signal_type>
+        <node>8</node>
+    </terminal>
+
+    </terminals>
+
+  </component>
+        </element_list>
+
+
+    </signal_processing>
+    
+
+</net_list>
